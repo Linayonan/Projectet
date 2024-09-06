@@ -1,1 +1,11 @@
+<<<<<<< HEAD
 dlt[snowflake]>=0.5.4
+=======
+#requirements
+dlt[snowflake]==1.0.0
+ipykernel==6.9.1
+pandas==1.3.5
+dbt==1.0.0
+snowflake-connector-python==2.7.9
+streamlit==1.2.0
+>>>>>>> afcb1cf52d04f5047866537456017d79e3ca1478
