@@ -1,0 +1,7 @@
+#requirements
+dlt[snowflake]==1.0.0
+ipykernel==6.9.1
+pandas==1.3.5
+dbt==1.0.0
+snowflake-connector-python==2.7.9
+streamlit==1.2.0
