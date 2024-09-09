@@ -40,7 +40,18 @@ if __name__ == "__main__":
     working_directory = Path(__file__).parent
     os.chdir(working_directory)
 
-    query= "data engineer"
-    table_name = "data_field_job_ads"
+    query= "ekonomi"
+    query= "economy"
+    query= "sales"
+    query= "ekonom"
+    query= "account manager"
+    query= "invest"
+    query= "investment"
+    query = 'salesman'
+    query = 'bank'
+    query = 'redovisning"
+    query = 'administratör'
+    
+    table_name = "econom_ads"
 
     run_pipeline(query, table_name)
