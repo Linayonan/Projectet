@@ -47,10 +47,10 @@ if __name__ == "__main__":
     query= "account manager"
     query= "invest"
     query= "investment"
-    query = 'salesman'
-    query = 'bank'
-    query = 'redovisning"
-    query = 'administratör'
+    query = "salesman"
+    query = "bank"
+    query = "redovisning"
+    query = "administratör"
     
     table_name = "econom_ads"
 
