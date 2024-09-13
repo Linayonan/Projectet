@@ -1,0 +1,49 @@
+Table fct_job_postings {
+  fct_job_id INTEGER [pk] 
+  job_details_key INTEGER [ref: > dim_job_details.job_details_id] 
+  employer_key INTEGER [ref: > dim_employer.employer_id] 
+  occupation_key INTEGER [ref: > dim_occupation.occupation_id] 
+  application_deadline_date INTEGER
+  auxiliary_attributes_key INTEGER [ref: > dim_auxiliary_attributes.auxiliary_attributes_id]
+  number_of_vacancies INTEGER
+  relevance FLOAT
+}
+
+Table dim_job_details {
+  job_details_id INTEGER [pk] 
+  headline STRING
+  description TEXT
+  employment_type STRING
+  duration STRING
+  salary_type STRING
+  scope_of_work_min NUMBER(19,0)
+  scope_of_work_max NUMBER(19,0)
+}
+
+Table dim_employer {
+  employer_id INTEGER [pk]
+  employer_name STRING
+  employer_workplace STRING
+  employer_organization_number STRING
+  employer_url STRING
+  workplace_street_address STRING
+  workplace_postcode STRING
+  workplace_city STRING
+  workplace_region STRING
+  workplace_country STRING
+}
+
+Table dim_occupation {
+  occupation_id INTEGER [pk]
+  occupation_label STRING
+  occupation_group_label STRING
+  occupation_field_label STRING
+}
+
+
+Table dim_auxiliary_attributes {
+  auxiliary_attributes_id INTEGER [pk]
+  experience_required BOOLEAN
+  driver_license BOOLEAN
+  access_to_own_car BOOLEAN
+}
