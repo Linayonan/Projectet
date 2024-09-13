@@ -1,0 +1,6 @@
+sources:
+    - name: econom_ads
+      schema: staging
+      tables: 
+        - name: stg_econom_ads
+          identifier: econom_field_ads
