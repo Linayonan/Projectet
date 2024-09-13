@@ -1,16 +1,16 @@
 Table fct_job_postings {
   fct_job_id INTEGER [pk] 
-  job_details_key INTEGER [ref: > dim_job_details.job_details_id] 
-  employer_key INTEGER [ref: > dim_employer.employer_id] 
-  occupation_key INTEGER [ref: > dim_occupation.occupation_id] 
-  application_deadline_date INTEGER
-  auxiliary_attributes_key INTEGER [ref: > dim_auxiliary_attributes.auxiliary_attributes_id]
+  job_details_key STRING [ref: > dim_job_details.job_details_id] 
+  employer_key STRING [ref: > dim_employer.employer_id] 
+  occupation_key STRING [ref: > dim_occupation.occupation_id] 
+  application_deadline_date DATETIME
+  auxiliary_attributes_key STRING [ref: > dim_auxiliary_attributes.auxiliary_attributes_id]
   number_of_vacancies INTEGER
   relevance FLOAT
 }
 
 Table dim_job_details {
-  job_details_id INTEGER [pk] 
+  job_details_id STRING [pk] 
   headline STRING
   description TEXT
   employment_type STRING
@@ -21,7 +21,7 @@ Table dim_job_details {
 }
 
 Table dim_employer {
-  employer_id INTEGER [pk]
+  employer_id STRING [pk]
   employer_name STRING
   employer_workplace STRING
   employer_organization_number STRING
