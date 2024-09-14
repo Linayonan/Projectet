@@ -12,12 +12,12 @@ def _get_ads(url_for_search, params):
     response.raise_for_status()
     return json.loads(response.content.decode('utf8'))
 
-@dlt.resource(write_disposition="append")
+@dlt.resource(write_disposition="replace")
 def jobsearch_resource(params):
     url = 'https://jobsearch.api.jobtechdev.se'
     url_for_search = f"{url}/search"
 
-    offset = 100
+    offset = 0
     limit = 100
 
     while True:
