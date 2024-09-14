@@ -9,7 +9,14 @@ models:
       - name: workplace_city
         data_tests:
           - not_null
-
+   
+      - name: employer_name
+        description: "Name of the employer"
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_not_match_regex:
+              regex: '^$'     
+  
   - name: dim_job_details
     columns:
       - name: econom_details_id
@@ -21,11 +28,12 @@ models:
         data_tests:
           - not_null
 
-      - name: emplpoyment_type
+      - name: employment_type
         data_tests:
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ['Behovsanställning', 'Vanlig anställning', 'Arbete utomlands']
-
+          - dbt_expectations.expect_column_values_to_not_match_regex:
+              regex: '^$'
 
   - name: fct_job_ads
     columns:
@@ -57,6 +65,4 @@ models:
 
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: number
-
-
-
+    
