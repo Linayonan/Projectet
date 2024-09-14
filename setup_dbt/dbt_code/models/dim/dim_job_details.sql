@@ -4,7 +4,7 @@ SELECT
     {{ dbt_utils.generate_surrogate_key(['id', 'headline'])}} AS econom_details_id,
     headline,
     "description",
-    emplpoyment_type,
+    employment_type,
     coalesce(duration, 'Duration not specified') AS duration, 
     salary_type,
     scope_of_work_min,

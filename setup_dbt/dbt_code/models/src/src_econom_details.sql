@@ -4,7 +4,7 @@ SELECT
     id,
     headline,
     description__text AS "description",
-    employment_type__label AS emplpoyment_type,
+    employment_type__label AS employment_type,
     duration__label AS duration, 
     salary_type__label AS salary_type,
     scope_of_work__min AS scope_of_work_min,

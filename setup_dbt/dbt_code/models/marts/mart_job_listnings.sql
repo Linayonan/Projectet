@@ -10,7 +10,7 @@ SELECT
     e.workplace_city,
     jd.headline,
     jd."description",
-    jd.emplpoyment_type,
+    jd.employment_type,
     jd.salary_type,
     jd.scope_of_work_min,
     jd.scope_of_work_max,
