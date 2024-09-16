@@ -1,12 +1,15 @@
 models:
   - name: dim_employer
+    description: "Information about the employer such as name, address, organization number"
     columns:
       - name: employer_id
+        description: "Unique identifier for each employer"
         data_tests:
           - unique
           - not_null
 
       - name: workplace_city
+        description: "The city where the employer's workplace is located"
         data_tests:
           - not_null
    
@@ -17,18 +20,58 @@ models:
           - dbt_expectations.expect_column_values_to_not_match_regex:
               regex: '^$'     
   
+  - name: dim_auxiliary_attributes
+    description: "Contains auxiliary information related to job listings, such as experience requirements, driver’s license needs, and access to personal transportation."
+    columns:
+      - name: auxiliary_attributes_id
+        description: "Unique identifier for each auxiliary attribute record"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: experience_required
+        description: "Indicates if prior work experience is required for the job"
+      
+      - name: driver_license
+        description: "Specifies whether a driver’s license is required for the job"
+
+      - name: access_to_own_car
+        description: "Indicates if access to a personal car is required for the job"
+
+  - name: dim_occupation
+    description: "information related to job occupations"
+    columns:
+      - name: occupation_id
+        description: "Unique identifier for each occupation"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: occupation_label
+        description: "The label or title of the occupation"
+  
+      - name: occupation_group_label
+        description: "The group classification of the occupation, providing a higher-level category"
+
+      - name: occupation_field_label
+        description: "The specific field of the job"
+
   - name: dim_job_details
+    description: "Details about the specific job"
     columns:
       - name: econom_details_id
+        description: "Unique identifier for economic details associated with the job"
         data_tests:
           - not_null
           - unique
 
       - name: headline
+        description: "Job title or headline summarizing the job"
         data_tests:
           - not_null
 
       - name: employment_type
+        description: "The type of employment for the job"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ['Behovsanställning', 'Vanlig anställning', 'Arbete utomlands']
@@ -36,13 +79,16 @@ models:
               regex: '^$'
 
   - name: fct_job_ads
+    description: "The facts are relevance, application deadline and vacancies"
     columns:
       - name: job_details_key
+        description: "Foreign key, surrogate key linking to the dim_job_details model"
         data_tests:
           - relationships:
               to: ref('dim_job_details')
               field:  econom_details_id
       - name: relevance
+        description: "The relevance score of the job ad, ranging from 0 to 1"
         data_tests:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0  
@@ -51,6 +97,7 @@ models:
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: float
       - name: vacancies
+        description: "Number of vacancies available for the job"
         data_tests: 
           - dbt_expectations.expect_column_quantile_values_to_be_between:
               quantile: .99
@@ -65,4 +112,7 @@ models:
 
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: number
+
+  - name: mart_job_listnings
+    description: "This mart provides a comprehensive view of job listings, combining details about the employer, job specifics, auxiliary attributes, and occupation-related information. It includes fields such as the employer's name and city, job title, employment type, salary, scope of work, the number of vacancies, and the job's relevance score. This model is derived by joining data from fact and dimension tables to create a in depth overview of economy related job listings from the Swedish Public Employment Service ."
     
