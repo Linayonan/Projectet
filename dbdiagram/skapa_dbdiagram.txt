@@ -3,7 +3,7 @@ Table fct_job_ads {
   job_details_key STRING [ref: > dim_job_details.job_details_id] 
   employer_key STRING [ref: > dim_employer.employer_id] 
   occupation_key STRING [ref: > dim_occupation.occupation_id] 
-  application_deadline_date TIMESTAMP [not null]
+  application_deadline_date TIMESTAMP_TZ [not null]
   auxiliary_attributes_key STRING [ref: > dim_auxiliary_attributes.auxiliary_attributes_id]
   number_of_vacancies INTEGER [not null]
   relevance FLOAT [not null]
@@ -12,7 +12,8 @@ Table fct_job_ads {
 Table dim_job_details {
   job_details_id STRING [pk]
   headline STRING [not null]
-  description TEXT [not null]
+  description STRING [not null]
+  description_html STRING [not null]
   employment_type STRING [not null]
   duration STRING [not null]
   salary_type STRING [not null]
