@@ -1,36 +1,37 @@
-Table fct_job_postings {
+Table fct_job_ads {
   fct_job_id INTEGER [pk] 
   job_details_key STRING [ref: > dim_job_details.job_details_id] 
   employer_key STRING [ref: > dim_employer.employer_id] 
   occupation_key STRING [ref: > dim_occupation.occupation_id] 
-  application_deadline_date DATETIME
+  application_deadline_date TIMESTAMP_TZ [not null]
   auxiliary_attributes_key STRING [ref: > dim_auxiliary_attributes.auxiliary_attributes_id]
-  number_of_vacancies INTEGER
-  relevance FLOAT
+  number_of_vacancies INTEGER [not null]
+  relevance FLOAT [not null]
 }
 
 Table dim_job_details {
-  job_details_id STRING [pk] 
-  headline STRING
-  description TEXT
-  employment_type STRING
-  duration STRING
-  salary_type STRING
+  job_details_id STRING [pk]
+  headline STRING [not null]
+  description STRING [not null]
+  description_html STRING [not null]
+  employment_type STRING [not null]
+  duration STRING [not null]
+  salary_type STRING [not null]
   scope_of_work_min NUMBER(19,0)
   scope_of_work_max NUMBER(19,0)
 }
 
 Table dim_employer {
   employer_id STRING [pk]
-  employer_name STRING
-  employer_workplace STRING
-  employer_organization_number STRING
-  employer_url STRING
-  workplace_street_address STRING
-  workplace_postcode STRING
-  workplace_city STRING
-  workplace_region STRING
-  workplace_country STRING
+  employer_name STRING [not null]
+  employer_workplace STRING [not null]
+  employer_organization_number STRING [not null]
+  employer_url STRING [not null]
+  workplace_street_address STRING [not null]
+  workplace_postcode STRING [not null]
+  workplace_city STRING [not null]
+  workplace_region STRING [not null]
+  workplace_country STRING [not null]
 }
 
 Table dim_occupation {
