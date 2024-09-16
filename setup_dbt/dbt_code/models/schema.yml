@@ -70,8 +70,14 @@ models:
         data_tests:
           - not_null
 
+      - name: duration
+        description: "The contract duration"
+        data_tests:
+          - not_null
+
+
       - name: employment_type
-        description: "The type of employment for the job"
+        description: "The type of employment. Field expected: On-call employee, Permanent, Abroad "
         data_tests:
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ['Behovsanställning', 'Vanlig anställning', 'Arbete utomlands']
