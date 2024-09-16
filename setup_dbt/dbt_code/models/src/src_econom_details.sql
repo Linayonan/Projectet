@@ -4,6 +4,7 @@ SELECT
     id,
     headline,
     description__text AS "description",
+    description__text_formatted AS description_html,
     employment_type__label AS employment_type,
     duration__label AS duration, 
     salary_type__label AS salary_type,
