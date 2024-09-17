@@ -10,7 +10,7 @@ Table fct_job_ads {
 }
 
 Table dim_job_details {
-  job_details_id STRING [pk]
+  job_details_id STRING [pk] 
   headline STRING [not null]
   description STRING [not null]
   description_html STRING [not null]
@@ -35,16 +35,16 @@ Table dim_employer {
 }
 
 Table dim_occupation {
-  occupation_id INTEGER [pk]
-  occupation_label STRING
-  occupation_group_label STRING
-  occupation_field_label STRING
+  occupation_id STRING [pk]
+  occupation_label STRING [not null]
+  occupation_group_label STRING [not null]
+  occupation_field_label STRING [not null]
 }
 
 
 Table dim_auxiliary_attributes {
-  auxiliary_attributes_id INTEGER [pk]
-  experience_required BOOLEAN
-  driver_license BOOLEAN
-  access_to_own_car BOOLEAN
+  auxiliary_attributes_id STRING [pk]
+  experience_required BOOLEAN [not null]
+  driver_license BOOLEAN [not null]
+  access_to_own_car BOOLEAN [not null]
 }
