@@ -61,7 +61,8 @@ This project builds a data warehouse for economy job advertisements using Snowfl
 
 5. **dbt Configuration**:  
    Install dbt: `pip install dbt`  
-   Create or edit `profiles.yml` file in your `~/.dbt/` directory (for macOS/Linux) or `%USERPROFILE%\.dbt\` directory (for Windows) and add your own details:  
+   Create or edit `profiles.yml` file in your `~/.dbt/` directory (for macOS/Linux)
+   or `%USERPROFILE%\.dbt\` directory (for Windows) and add your own details:  
    `dbt_code:`  
      `target: dev`  
      `outputs:`  
@@ -95,20 +96,22 @@ run dbt with the following script:
 `dbt run`
 
 This script will:  
-Compile the models in the dbt project and execute SQL commands to create and                update tables/views in your Snowflake database based on the loaded data. In other words it transforms the data you load from dlt into what you want to have.
+Compile the models in the dbt project and execute SQL commands to create and update tables/views in your Snowflake database based on the loaded data. In other words it transforms the data you load from dlt into what you want to have.
 
 #### 3. **Running the Dashboard** 	
 run the streamlit dashboard with the following script: 	
+
 `python run_dashboard.py`
 
 This script will:  
 	create the data visualization
 
 #### 4. **Access the Dashboard**:  
-	Once the dashboard script is running either click the link provided in the terminal or  
-	enter it manually in your web browser.  
+Once the dashboard script is running either click the link provided in the terminal or  
+enter it manually in your web browser.  
 	  
-	the link is:  [`http://localhost:8501`](http://localhost:8501)  
+the link is:  
+	[`http://localhost:8501`] 
 	
 
 **IMPORTANT**   
