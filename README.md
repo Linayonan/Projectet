@@ -19,20 +19,20 @@ This project builds a data warehouse for economy job advertisements using Snowfl
 
 1. **Python Setup**:
 
-Ensure you have Python installed. Free to download from [python.org](https://www.python.org/downloads/).
+   Ensure you have Python installed. Free to download from [python.org](https://www.python.org/downloads/).
 
-Create a virtual environment:  
-`python -m venv venv`  
-`source venv/bin/activate  #On macOS/Linux`  
-`venv\Scripts\activate  #On Windows`  
+   Create a virtual environment:  
+  `python -m venv venv`  
+  `source venv/bin/activate  #On macOS/Linux`  
+  `venv\Scripts\activate  #On Windows`  
 	  
-Install the required packages:  
+   Install the required packages:  
 	`pip install -r requirements.tx`  
 	
 
 2. **Snowflake setup**  
    A snowflake account is required. To create and configure your snowflake account  
-   please refer to snowflakes own website for account creation.  
+   please refer to Snowflakes own website for account creation.  
    [https://signup.snowflake.com/](https://signup.snowflake.com/)  
       
 3. **Environment Variables**:  
@@ -78,9 +78,10 @@ Install the required packages:
 
 ### **Usage Instructions**
 
-#### **Running the Data Pipeline**
+#### 1. **Running the Data Pipeline**
 
-To fetch job ads from the API and load them into Snowflake, run the following script:  
+To fetch job ads from the API and load them into Snowflake, run the following script:
+
 `python jobsearch.py`
 
 This script will:  
@@ -88,19 +89,22 @@ This script will:
 	Fetch economy job listings.  
 	Load the data into Snowflake.
 
-**Running the dbt**  
-run dbt with the following script:  
+#### 2. **Running the dbt**  
+run dbt with the following script:
+
 `dbt run`
 
 This script will:  
 Compile the models in the dbt project and execute SQL commands to create and                update tables/views in your Snowflake database based on the loaded data. In other words it transforms the data you load from dlt into what you want to have.
 
-#### **Running the Dashboard** 	run the streamlit dashboard with the following script: 	`python run_dashboard.py`
+#### 3. **Running the Dashboard** 	
+run the streamlit dashboard with the following script: 	
+`python run_dashboard.py`
 
 This script will:  
 	create the data visualization
 
-**Access the Dashboard**:  
+#### 4. **Access the Dashboard**:  
 	Once the dashboard script is running either click the link provided in the terminal or  
 	enter it manually in your web browser.  
 	  
