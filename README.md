@@ -98,7 +98,7 @@ Compile the models in the dbt project and execute SQL commands to create and    
 #### **Running the Dashboard** 	run the streamlit dashboard with the following script: 	`python run_dashboard.py`
 
 This script will:  
-	create the data vi
+	create the data visualization
 
 **Access the Dashboard**:  
 	Once the dashboard script is running either click the link provided in the terminal or  
