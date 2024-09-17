@@ -8,8 +8,33 @@ models:
           - unique
           - not_null
 
+      - name: employer_workplace
+        description: "The name of the company"
+        data_tests:
+          - not_null
+
+      - name: employer_url
+        description: "The company's website"
+        data_tests:
+          - not_null
+
       - name: workplace_city
         description: "The city where the employer's workplace is located"
+        data_tests:
+          - not_null
+  
+      - name: workplace_country
+        description: "The country where the employer's workplace is located"
+        data_tests:
+          - not_null
+
+      - name: workplace_postcode
+        description: "The postcode of the area where the company is located"
+        data_tests:
+          - not_null
+
+      - name: workplace_street_address
+        description: "The street address where the company is located"
         data_tests:
           - not_null
    
@@ -33,7 +58,7 @@ models:
         description: "Indicates if prior work experience is required for the job"
       
       - name: driver_license
-        description: "Specifies whether a driver’s license is required for the job"
+        description: "Specifies whether a drivers license is required for the job"
 
       - name: access_to_own_car
         description: "Indicates if access to a personal car is required for the job"
@@ -49,12 +74,18 @@ models:
 
       - name: occupation_label
         description: "The label or title of the occupation"
+        data_tests:
+          - not_null
   
       - name: occupation_group_label
         description: "The group classification of the occupation, providing a higher-level category"
+        data_tests:
+          - not_null
 
       - name: occupation_field_label
         description: "The specific field of the job"
+        data_tests:
+          - not_null
 
   - name: dim_job_details
     description: "Details about the specific job"
@@ -65,6 +96,9 @@ models:
           - not_null
           - unique
 
+      - name: description
+        description: "A description of the specific job opening"
+
       - name: headline
         description: "Job title or headline summarizing the job"
         data_tests:
@@ -72,6 +106,11 @@ models:
 
       - name: duration
         description: "The contract duration"
+        data_tests:
+          - not_null
+
+      - name: salary_type
+        description: "Information about the salary, whether its on hours, pre-determined monthly/weekly salary or flexible salary"
         data_tests:
           - not_null
 
@@ -87,12 +126,41 @@ models:
   - name: fct_job_ads
     description: "The facts are relevance, application deadline and vacancies"
     columns:
+
+      - name: fct_job_id
+        description: "Unique identifier for each job ad"
+        data_tests:
+          - unique
+          - not_null
+
       - name: job_details_key
         description: "Foreign key, surrogate key linking to the dim_job_details model"
         data_tests:
           - relationships:
               to: ref('dim_job_details')
               field:  econom_details_id
+
+      - name: employer_key
+        description: "Foreign key, surrogate key linking to the dim_employer model"
+        data_tests:
+          - relationships:
+              to: ref('dim_employer')
+              field:  employer_id
+    
+      - name: occupation_key
+        description: "Foreign key, surrogate key linking to the dim_occupation model"
+        data_tests:
+          - relationships:
+              to: ref('dim_occupation')
+              field:  occupation_id
+
+      - name: auxiliary_attributes_key
+        description: "Foreign key, surrogate key linking to the dim_auxiliary_attributes model"
+        data_tests:
+          - relationships:
+              to: ref('dim_auxiliary_attributes')
+              field:  auxiliary_attributes_id
+
       - name: relevance
         description: "The relevance score of the job ad, ranging from 0 to 1"
         data_tests:
